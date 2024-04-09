@@ -1,7 +1,5 @@
 package com.algaworks.algafood.domain.model;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,21 +14,18 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Restaurante {
-	
+public class Cidade {
+
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(nullable = false)
 	private String nome;
-
-	@Column(name = "taxa_frete")
-	private BigDecimal taxaFrete;
 	
 	@ManyToOne
-	@JoinColumn
-	private Cozinha cozinha;
-
+	@JoinColumn(nullable = false)
+	private Estado estado;
 
 }
